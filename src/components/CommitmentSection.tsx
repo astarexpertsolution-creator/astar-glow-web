@@ -1,5 +1,4 @@
 import { CheckCircle2 } from "lucide-react";
-import LogoWatermark from "./LogoWatermark";
 
 const commitments = [
   "Quality-driven products",
@@ -10,8 +9,6 @@ const commitments = [
 
 const CommitmentSection = () => (
   <section className="relative py-24 overflow-hidden">
-    <LogoWatermark className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px]" />
-
     <div className="container relative z-10 mx-auto px-4 text-center max-w-3xl">
       <p className="text-accent font-semibold tracking-[0.15em] uppercase text-sm mb-3">
         Our Promise
@@ -24,7 +21,6 @@ const CommitmentSection = () => (
         everything we do. We are committed to supporting healthcare professionals and
         researchers with solutions that shape the future of science.
       </p>
-
       <div className="grid sm:grid-cols-2 gap-4 text-left">
         {commitments.map((c) => (
           <div
