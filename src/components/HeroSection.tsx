@@ -1,15 +1,11 @@
 import heroBg from "@/assets/hero-bg.png";
-import LogoWatermark from "./LogoWatermark";
 
 const HeroSection = () => (
   <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
     {/* Background image */}
     <div className="absolute inset-0">
       <img src={heroBg} alt="" className="w-full h-full object-cover" />
-      <div className="absolute inset-0 hero-gradient opacity-85" />
     </div>
-
-    <LogoWatermark className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] opacity-[0.06]" />
 
     <div className="container relative z-10 mx-auto px-4 py-32">
       <div className="max-w-3xl animate-fade-in-up">
