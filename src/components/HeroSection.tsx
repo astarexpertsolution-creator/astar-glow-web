@@ -7,6 +7,15 @@ const HeroSection = () => (
       <img src={heroBg} alt="" className="w-full h-full object-cover" />
     </div>
 
+    {/* Right-side blur + white overlay for text readability */}
+    <div
+      className="absolute inset-0"
+      style={{
+        background: "linear-gradient(to right, transparent 40%, rgba(255,255,255,0.75) 60%, rgba(255,255,255,0.92) 100%)",
+        backdropFilter: "blur(0px)",
+      }}
+    />
+
     <div className="container relative z-10 mx-auto px-4 py-32">
       <div className="max-w-3xl animate-fade-in-up ml-auto text-right">
         <p className="text-black font-medium tracking-[0.2em] uppercase text-sm mb-4">
