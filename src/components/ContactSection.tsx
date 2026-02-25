@@ -1,10 +1,7 @@
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
-import LogoWatermark from "./LogoWatermark";
 
 const ContactSection = () => (
   <section id="contact" className="relative py-24 section-gradient overflow-hidden">
-    <LogoWatermark className="bottom-0 right-[-80px] w-[400px] h-[400px]" />
-
     <div className="container relative z-10 mx-auto px-4">
       <div className="text-center mb-16">
         <p className="text-accent font-semibold tracking-[0.15em] uppercase text-sm mb-3">
@@ -17,7 +14,6 @@ const ContactSection = () => (
           Partner with us to build the future of science.
         </p>
       </div>
-
       <div className="max-w-2xl mx-auto grid sm:grid-cols-2 gap-6">
         <div className="bg-card rounded-2xl p-7 shadow-[var(--card-shadow)] flex items-start gap-4">
           <div className="w-11 h-11 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
@@ -31,7 +27,6 @@ const ContactSection = () => (
             </p>
           </div>
         </div>
-
         <div className="bg-card rounded-2xl p-7 shadow-[var(--card-shadow)] flex items-start gap-4">
           <div className="w-11 h-11 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
             <Phone className="w-5 h-5 text-accent" />
@@ -43,7 +38,6 @@ const ContactSection = () => (
             </a>
           </div>
         </div>
-
         <div className="bg-card rounded-2xl p-7 shadow-[var(--card-shadow)] flex items-start gap-4">
           <div className="w-11 h-11 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
             <Mail className="w-5 h-5 text-accent" />
@@ -58,7 +52,6 @@ const ContactSection = () => (
             </a>
           </div>
         </div>
-
         <div className="bg-card rounded-2xl p-7 shadow-[var(--card-shadow)] flex items-start gap-4">
           <div className="w-11 h-11 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
             <Clock className="w-5 h-5 text-accent" />
