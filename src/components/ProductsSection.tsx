@@ -1,5 +1,4 @@
 import { Stethoscope, Microscope, FlaskConical, TestTubes } from "lucide-react";
-import LogoWatermark from "./LogoWatermark";
 
 const products = [
   {
@@ -30,8 +29,6 @@ const products = [
 
 const ProductsSection = () => (
   <section id="products" className="relative py-24 overflow-hidden">
-    <LogoWatermark className="top-1/2 right-[-120px] -translate-y-1/2 w-[500px] h-[500px]" />
-
     <div className="container relative z-10 mx-auto px-4">
       <div className="text-center mb-16">
         <p className="text-accent font-semibold tracking-[0.15em] uppercase text-sm mb-3">
@@ -45,7 +42,6 @@ const ProductsSection = () => (
           that meets national and international quality standards.
         </p>
       </div>
-
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {products.map((p) => (
           <div
