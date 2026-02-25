@@ -7,12 +7,11 @@ const HeroSection = () => (
       <img src={heroBg} alt="" className="w-full h-full object-cover" />
     </div>
 
-    {/* Right-side blur + white overlay for text readability */}
+    {/* Right-side strong white overlay for text readability */}
     <div
       className="absolute inset-0"
       style={{
-        background: "linear-gradient(to right, transparent 40%, rgba(255,255,255,0.75) 60%, rgba(255,255,255,0.92) 100%)",
-        backdropFilter: "blur(0px)",
+        background: "linear-gradient(to right, transparent 25%, rgba(255,255,255,0.6) 45%, rgba(255,255,255,0.97) 65%, rgba(255,255,255,1) 100%)",
       }}
     />
 
