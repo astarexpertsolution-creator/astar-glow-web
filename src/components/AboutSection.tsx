@@ -1,10 +1,7 @@
 import aboutBg from "@/assets/about-bg.png";
-import LogoWatermark from "./LogoWatermark";
 
 const AboutSection = () => (
   <section id="about" className="relative py-24 overflow-hidden">
-    <LogoWatermark className="top-10 right-[-100px] w-[500px] h-[500px]" />
-
     <div className="container relative z-10 mx-auto px-4">
       <div className="grid lg:grid-cols-2 gap-16 items-center">
         <div>
