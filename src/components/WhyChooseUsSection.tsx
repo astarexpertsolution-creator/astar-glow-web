@@ -8,7 +8,6 @@ import {
   GraduationCap,
   Activity,
 } from "lucide-react";
-import LogoWatermark from "./LogoWatermark";
 
 const reasons = [
   { icon: Handshake, text: "Trusted medical technology partners" },
@@ -26,8 +25,6 @@ const industries = [
 
 const WhyChooseUsSection = () => (
   <section id="why-us" className="relative py-24 section-gradient overflow-hidden">
-    <LogoWatermark className="top-20 left-[-100px] w-[450px] h-[450px]" />
-
     <div className="container relative z-10 mx-auto px-4">
       <div className="grid lg:grid-cols-2 gap-16">
         {/* Why Choose Us */}
@@ -49,7 +46,6 @@ const WhyChooseUsSection = () => (
             ))}
           </div>
         </div>
-
         {/* Industries We Serve */}
         <div>
           <p className="text-accent font-semibold tracking-[0.15em] uppercase text-sm mb-3">
