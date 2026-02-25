@@ -8,19 +8,19 @@ const HeroSection = () => (
     </div>
 
     <div className="container relative z-10 mx-auto px-4 py-32">
-      <div className="max-w-3xl animate-fade-in-up">
-        <p className="text-secondary font-medium tracking-[0.2em] uppercase text-sm mb-4">
+      <div className="max-w-3xl animate-fade-in-up ml-auto text-right">
+        <p className="text-black font-medium tracking-[0.2em] uppercase text-sm mb-4">
           Future of Science
         </p>
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-primary-foreground leading-tight mb-6">
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-black leading-tight mb-6">
           Advanced Medical Equipment &{" "}
-          <span className="text-secondary">Diagnostic Solutions</span>
+          <span className="text-black">Diagnostic Solutions</span>
         </h1>
-        <p className="text-primary-foreground/80 text-lg md:text-xl max-w-2xl mb-10 leading-relaxed">
+        <p className="text-black text-lg md:text-xl max-w-2xl mb-10 leading-relaxed ml-auto">
           Delivering innovation for healthcare & research. We bridge the gap between
           cutting-edge technology and practical application.
         </p>
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-wrap gap-4 justify-end">
           <a
             href="#products"
             className="inline-flex items-center px-8 py-3.5 bg-accent text-accent-foreground rounded-lg font-semibold text-sm tracking-wide hover:opacity-90 transition-opacity"
@@ -29,7 +29,7 @@ const HeroSection = () => (
           </a>
           <a
             href="#contact"
-            className="inline-flex items-center px-8 py-3.5 border border-primary-foreground/30 text-primary-foreground rounded-lg font-semibold text-sm tracking-wide hover:bg-primary-foreground/10 transition-colors"
+            className="inline-flex items-center px-8 py-3.5 border border-black/30 text-black rounded-lg font-semibold text-sm tracking-wide hover:bg-black/10 transition-colors"
           >
             Contact Us
           </a>
