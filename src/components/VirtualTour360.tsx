@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
+import tour360Image from "@/assets/360-office-tour.jpg";
 
 interface VirtualTour360Props {
   image360Url?: string;
@@ -8,7 +9,7 @@ interface VirtualTour360Props {
 }
 
 const VirtualTour360 = ({
-  image360Url = "/api/placeholder/2048/1024",
+  image360Url = tour360Image,
   autoRotate = true,
   className = "",
 }: VirtualTour360Props) => {
@@ -58,7 +59,7 @@ const VirtualTour360 = ({
 
     // Create sphere geometry (inverted for 360 viewing)
     const geometry = new THREE.SphereGeometry(500, 60, 40);
-    geometry.scale(-1, 1, 1); // Invert the sphere
+    geometry.scale(-1, 1, 1);
 
     // Load texture
     const textureLoader = new THREE.TextureLoader();
@@ -73,10 +74,8 @@ const VirtualTour360 = ({
       undefined,
       (err) => {
         console.error("Error loading 360 image:", err);
-        setError("Failed to load 360° image. Please upload a valid panoramic image.");
+        setError("Failed to load 360\u00b0 image. Please upload a valid panoramic image.");
         setIsLoading(false);
-        
-        // Create placeholder sphere with color
         const material = new THREE.MeshBasicMaterial({ color: 0x1a1a1a, wireframe: true });
         sphere = new THREE.Mesh(geometry, material);
         scene.add(sphere);
@@ -141,26 +140,17 @@ const VirtualTour360 = ({
     // Animation loop
     const animate = () => {
       animationId = requestAnimationFrame(animate);
-
-      // Auto-rotate when not interacting
       if (autoRotate && !isUserInteracting) {
         lon += 0.05;
       }
-
-      // Clamp latitude
       lat = Math.max(-85, Math.min(85, lat));
-
-      // Convert to radians
       phi = THREE.MathUtils.degToRad(90 - lat);
       theta = THREE.MathUtils.degToRad(lon);
-
-      // Update camera position
       camera.target = new THREE.Vector3(
         500 * Math.sin(phi) * Math.cos(theta),
         500 * Math.cos(phi),
         500 * Math.sin(phi) * Math.sin(theta)
       );
-
       camera.lookAt(camera.target);
       renderer.render(scene, camera);
     };
@@ -181,7 +171,6 @@ const VirtualTour360 = ({
 
     window.addEventListener("resize", handleResize);
 
-    // Cleanup
     return () => {
       cancelAnimationFrame(animationId);
       window.removeEventListener("resize", handleResize);
@@ -210,7 +199,7 @@ const VirtualTour360 = ({
             Explore Our Space
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Virtual 360° Office Tour
+            Virtual 360\u00b0 Office Tour
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Take an interactive tour of our state-of-the-art facility. Drag to look around,
@@ -229,7 +218,7 @@ const VirtualTour360 = ({
             <div className="absolute inset-0 flex items-center justify-center bg-background/80 backdrop-blur-sm">
               <div className="text-center">
                 <div className="w-12 h-12 border-4 border-accent border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-                <p className="text-foreground font-medium">Loading 360° view...</p>
+                <p className="text-foreground font-medium">Loading 360\u00b0 view...</p>
               </div>
             </div>
           )}
@@ -238,14 +227,14 @@ const VirtualTour360 = ({
             <div className="absolute top-4 left-4 right-4 bg-destructive/90 text-destructive-foreground px-4 py-3 rounded-lg">
               <p className="text-sm font-medium">{error}</p>
               <p className="text-xs mt-1 opacity-80">
-                Upload a 360° panoramic image to: <code className="font-mono">src/assets/360-office-tour.jpg</code>
+                Upload a 360\u00b0 panoramic image to: <code className="font-mono">src/assets/360-office-tour.jpg</code>
               </p>
             </div>
           )}
 
           <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-background/80 backdrop-blur-sm px-4 py-2 rounded-full">
             <p className="text-xs text-muted-foreground font-medium">
-              🖱️ Drag to look around • 📱 Swipe on mobile
+              \ud83d\uddb1\ufe0f Drag to look around \u2022 \ud83d\udcf1 Swipe on mobile
             </p>
           </div>
         </div>
