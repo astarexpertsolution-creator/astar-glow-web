@@ -1,10 +1,18 @@
-import heroBg from "@/assets/hero-bg.png";
+import heroVideo from "@/assets/hero-video.mp4";
 
 const HeroSection = () => (
   <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
-    {/* Background image */}
+    {/* Background video */}
     <div className="absolute inset-0">
-      <img src={heroBg} alt="" className="w-full h-full object-cover" />
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="w-full h-full object-cover"
+      >
+        <source src={heroVideo} type="video/mp4" />
+      </video>
     </div>
 
     {/* Right-side strong white overlay for text readability */}
