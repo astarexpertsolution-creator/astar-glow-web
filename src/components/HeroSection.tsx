@@ -1,25 +1,62 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import heroVideo from "@/assets/hero-video.mp4";
+import { Play } from "lucide-react";
 
 const HeroSection = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [showPlayButton, setShowPlayButton] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
-    if (video) {
-      // Set video to start at 1 second to skip unwanted content
-      video.currentTime = 1;
-      
-      // Force play on mobile devices
+    if (!video) return;
+
+    // Set video to start at 2 seconds to skip unwanted content
+    video.currentTime = 2;
+
+    // Try to play the video
+    const attemptPlay = () => {
       const playPromise = video.play();
       if (playPromise !== undefined) {
-        playPromise.catch((error) => {
-          // Auto-play was prevented, video will show play button
-          console.log("Autoplay prevented:", error);
-        });
+        playPromise
+          .then(() => {
+            // Auto-play succeeded
+            setShowPlayButton(false);
+          })
+          .catch(() => {
+            // Auto-play was prevented, show play button
+            setShowPlayButton(true);
+          });
       }
-    }
+    };
+
+    // Initial play attempt
+    attemptPlay();
+
+    // Add event listeners for user interaction on mobile
+    const handleInteraction = () => {
+      attemptPlay();
+      // Remove listeners after first interaction
+      document.removeEventListener('touchstart', handleInteraction);
+      document.removeEventListener('click', handleInteraction);
+    };
+
+    document.addEventListener('touchstart', handleInteraction, { once: true });
+    document.addEventListener('click', handleInteraction, { once: true });
+
+    return () => {
+      document.removeEventListener('touchstart', handleInteraction);
+      document.removeEventListener('click', handleInteraction);
+    };
   }, []);
+
+  const handlePlayClick = () => {
+    const video = videoRef.current;
+    if (video) {
+      video.currentTime = 2;
+      video.play();
+      setShowPlayButton(false);
+    }
+  };
 
   return (
     <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
@@ -34,9 +71,26 @@ const HeroSection = () => {
           webkit-playsinline="true"
           preload="auto"
           className="w-full h-full object-cover"
+          onCanPlay={() => {
+            if (videoRef.current) {
+              videoRef.current.currentTime = 2;
+            }
+          }}
         >
           <source src={heroVideo} type="video/mp4" />
         </video>
+
+        {/* Play button overlay for mobile when autoplay fails */}
+        {showPlayButton && (
+          <div 
+            onClick={handlePlayClick}
+            className="absolute inset-0 flex items-center justify-center bg-black/20 cursor-pointer z-20"
+          >
+            <div className="bg-white/90 rounded-full p-6 hover:bg-white transition-colors">
+              <Play className="w-12 h-12 text-black" fill="black" />
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Right-side strong white overlay for text readability */}
