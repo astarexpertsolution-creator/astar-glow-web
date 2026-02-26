@@ -8,8 +8,8 @@ const HeroSection = () => {
     const video = videoRef.current;
     if (!video) return;
 
-    // Set video to start at 2 seconds
-    video.currentTime = 2;
+    // Set video to start at 3 seconds
+    video.currentTime = 3;
 
     // Multiple aggressive play attempts
     const playVideo = async () => {
@@ -38,7 +38,7 @@ const HeroSection = () => {
 
     // Play when video is ready
     const handleCanPlay = () => {
-      video.currentTime = 2;
+      video.currentTime = 3;
       playVideo();
     };
     video.addEventListener('canplay', handleCanPlay);
