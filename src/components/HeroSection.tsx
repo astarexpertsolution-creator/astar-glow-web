@@ -8,52 +8,36 @@ const HeroSection = () => {
     const video = videoRef.current;
     if (!video) return;
 
-    // Set video to start at 3 seconds
-    video.currentTime = 3;
-
-    // Multiple aggressive play attempts
-    const playVideo = async () => {
-      try {
-        await video.play();
-      } catch (error) {
-        // Retry after a short delay
-        setTimeout(() => {
-          video.play().catch(() => {});
-        }, 100);
-      }
-    };
-
-    // Immediate play attempt
-    playVideo();
-
-    // Play on any user interaction
-    const events = ['touchstart', 'touchend', 'click', 'scroll'];
-    const handleInteraction = () => {
-      playVideo();
-    };
-
-    events.forEach(event => {
-      document.addEventListener(event, handleInteraction, { once: true, passive: true });
-    });
-
-    // Play when video is ready
-    const handleCanPlay = () => {
+    const handleLoaded = () => {
+      // Seek to 3s only after metadata is ready, then play
       video.currentTime = 3;
-      playVideo();
+      video.play().catch(() => {
+        // Mobile fallback: play on first touch/scroll
+        const events = ['touchstart', 'touchend', 'click', 'scroll'];
+        const handleInteraction = () => {
+          video.play().catch(() => {});
+          events.forEach(e => document.removeEventListener(e, handleInteraction));
+        };
+        events.forEach(e =>
+          document.addEventListener(e, handleInteraction, { once: true, passive: true })
+        );
+      });
     };
-    video.addEventListener('canplay', handleCanPlay);
+
+    if (video.readyState >= 1) {
+      // Metadata already loaded
+      handleLoaded();
+    } else {
+      video.addEventListener('loadedmetadata', handleLoaded, { once: true });
+    }
 
     return () => {
-      events.forEach(event => {
-        document.removeEventListener(event, handleInteraction);
-      });
-      video.removeEventListener('canplay', handleCanPlay);
+      video.removeEventListener('loadedmetadata', handleLoaded);
     };
   }, []);
 
   return (
     <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background video */}
       <div className="absolute inset-0">
         <video
           ref={videoRef}
