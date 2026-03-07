@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import heroVideo from "@/assets/hero-video.mp4";
+import brochure from "@/assets/A-Star_Expert_Solutions_Brochure_V1.0.pdf";
 
 const HeroSection = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -76,10 +77,12 @@ const HeroSection = () => {
           </p>
           <div className="flex flex-wrap gap-4 justify-end">
             <a
-              href="#products"
+              href={brochure}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center px-8 py-3.5 bg-accent text-accent-foreground rounded-lg font-semibold text-sm tracking-wide hover:opacity-90 transition-opacity"
             >
-              Explore Products
+              Download Brochure
             </a>
             <a
               href="#contact"
